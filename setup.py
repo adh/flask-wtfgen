@@ -27,7 +27,7 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
 
-        "Framework :: Flask"
+        "Framework :: Flask",
         "License :: OSI Approved :: MIT License",
 
         'Intended Audience :: Developers',
