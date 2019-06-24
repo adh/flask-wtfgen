@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint, flash, render_template
 from wtforms import StringField, PasswordField, SubmitField, SelectField, \
-    TextField, TextAreaField, BooleanField, RadioField, FormField
+    TextField, TextAreaField, BooleanField, RadioField, FormField, FileField
 from wtforms.widgets import TextArea, CheckboxInput, ListWidget, CheckboxInput
 from wtforms.ext.sqlalchemy.fields import QuerySelectMultipleField
 from wtforms.validators import DataRequired, Required, EqualTo, ValidationError, Email
@@ -26,7 +26,8 @@ class ArticleForm(FlaskForm):
     checkbox = BooleanField('Foo?')
     radio = RadioField('Bar', choices=[(i, i) for i in ['A', 'B', 'C']])
     author = FormField(AuthorForm)
-
+    file = FileField("File")
+    
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

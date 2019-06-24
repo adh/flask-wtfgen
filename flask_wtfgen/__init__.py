@@ -265,6 +265,17 @@ class RadioFieldRenderer(FieldRenderer):
                 for i in self.field)
         return Markup("").join(itms)
 
+@field_renderer('FileField')
+class RadioFieldRenderer(FieldRenderer):
+    def render_input(self):
+        args = self.view.get_field_args(self.field)
+        if "class" in args:
+            del args["class"]
+        args.update(self.kwargs)
+        if self.field.errors:
+            args["class"] = args.get("class", "") + " is-invalid"
+        return Markup('<div class="form-control-plaintext">{}</div>').format(Markup(self.field(**args)))
+    
 
 @field_renderer('SubmitField')
 class SubmitFieldRenderer(FieldRenderer):
