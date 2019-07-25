@@ -34,4 +34,4 @@ def index():
     f = ArticleForm()
     if f.validate_on_submit():
         pass
-    return render_template('template.html', f=VerticalFormView()(f))
+    return render_template('template.html', f=VerticalFormView(field_classes="form-control-sm")(f))

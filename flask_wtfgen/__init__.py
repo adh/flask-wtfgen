@@ -9,8 +9,9 @@ from hashlib import sha256
 from wtforms.validators import StopValidation
 from wtforms.utils import unset_value
 import json
-from .markup import element, button, link_button, GridColumn
-
+from flask_bootstrap_components.markup import element
+from flask_bootstrap_components.buttons import button, link_button
+from flask_bootstrap_components.grid import GridColumn
 
 
 class OrderedForm(FlaskForm):
@@ -332,12 +333,16 @@ class MultiCheckboxFieldRenderer(FieldRenderer):
 class VerticalFormView(FormView):
     formfield_view = None
     
-    def __init__(self, formfield_view=None, **kwargs):
+    def __init__(self,
+                 formfield_view=None,
+                 field_classes="",
+                 **kwargs):
         super(VerticalFormView, self).__init__(**kwargs)
         if any((isinstance(i, ButtonGroup) for i in self.buttons)):
             self.button_bar_attrs = {"class": "btn-toolbar"}
         self.error_attrs = {"class": "form-text invalid-feedback"}
         self.description_attrs = {"class": "form-text"}
+        self.field_classes = field_classes
         if formfield_view is not None:
             self.formfield_view = formfield_view
     
@@ -358,7 +363,7 @@ class VerticalFormView(FormView):
                        super(VerticalFormView, self).render_field(field,
                                                                   **kwargs)) 
     def get_field_args(self, field):
-        return {"class": "form-control"}
+        return {"class": "form-control " + self.field_classes}
 
     def get_formfield_view(self):
         return self.formfield_view or HorizontalFormView()

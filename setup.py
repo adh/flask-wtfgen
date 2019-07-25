@@ -17,7 +17,8 @@ setup(
     keywords="flask bootstrap wtforms",
     install_requires=[
         'Flask>=1.0',
-        'Flask-WTF'
+        'Flask-WTF',
+        'Flask-Bootstrap-Components',
     ],
 
     packages=[
