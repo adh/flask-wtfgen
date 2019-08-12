@@ -20,7 +20,8 @@ setup(
         'Flask-WTF',
         'Flask-Bootstrap-Components',
     ],
-
+    setup_requires=['setuptools_scm'],
+    use_scm_version=True,
     packages=[
         "flask_wtfgen",
     ],
