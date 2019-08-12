@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name="Flask-WTFGen",
-    version="0.1",
+    version="0.1.0",
     author = "Ales Hakl",
     author_email = "ales@hakl.net",
     description = ("Flask plugin to automatically generate customizable HTML from wtforms form"),
